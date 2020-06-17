@@ -1,3 +1,21 @@
 RewriteEngine On
 RewriteRule ^api/products/?$ api/app.php
 RewriteRule ^api/products/([0-9]+)?$ api/app.php?id=$1
+
+
+RewriteEngine On
+RewriteRule ^api/prodchart/?$ apichart/appchart.php
+RewriteRule ^api/prodchart/([0-9]+)?$ apichart/appchart.php?id=$2
+
+RewriteEngine On
+RewriteRule ^api/prodcharttotal/?$ apicharttotal/appcharttotal.php
+RewriteRule ^api/prodcharttotal/([0-9]+)?$ apicharttotal/appcharttotal.php?id=$3
+
+
+RewriteEngine On
+RewriteRule ^api/prodcharttotalin/?$ apicharttotalin/appcharttotalin.php
+RewriteRule ^api/prodcharttotalin/([0-9]+)?$ apicharttotalin/appcharttotalin.php?id=$4
+
+RewriteEngine On
+RewriteRule ^api/apicaterout/?$ apicaterout/apicaterout.php
+RewriteRule ^api/apicaterout/([0-9]+)?$ apicaterout/apicaterout.php?id=$5
