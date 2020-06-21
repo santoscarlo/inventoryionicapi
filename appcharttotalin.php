@@ -11,3 +11,6 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
 	}
 	exit(json_encode($data));
 }
+
+
+

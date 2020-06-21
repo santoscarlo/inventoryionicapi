@@ -24,9 +24,9 @@ if($_SERVER['REQUEST_METHOD'] === 'PUT'){
 		$status = "in";
 		$id = $conn->real_escape_string($_GET['id']);
 		$data = json_decode(file_get_contents("php://input"));
-		$sql = $conn->query("UPDATE prod SET item_count = item_count + '".$data->item_in."' WHERE id = '".$data->id."' ");
+		$sql = $conn->query("UPDATE prod SET item_count = item_count  + '".$data->item_in."' WHERE id = '".$data->id."'");
 
-		$data = json_decode(file_get_contents("php://input"));
+		// $data = json_decode(file_get_contents("php://input"));
 		$sql1 = $conn->query("INSERT INTO caterprod(prod_id, count, status)VALUES('".$data->id."', '".$data->item_in."', '".$status."')");
 
 		if($sql && $sql1){

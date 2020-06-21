@@ -19,15 +19,27 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
 }
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	// echo 'Post';
+	
 	$data = json_decode(file_get_contents("php://input"));
-	$sql = $conn->query("INSERT INTO prod(item_name, item_desc, item_count) VALUES('".$data->item_name."', '".$data->item_desc."', '".$data->item_count."')");
+
+	$sql1 = $conn->query("SELECT item_name FROM prod WHERE item_name = '".$data->item_name."'");
+	if(mysqli_num_rows($sql1) > 0){
+		echo json_encode('item exist');
+	}
+	else{
+		$sql = $conn->query("INSERT INTO prod(item_name, item_desc, item_count) VALUES('".$data->item_name."', '".$data->item_desc."', '".$data->item_count."')");
 
 	if($sql){
-		$data->id = $conn->insert_id;
-		exit(json_encode($data));
+		// $data->id = $conn->insert_id;
+		echo json_encode('created');
 	}else{
-		exit(json_encode(array('status' => 'error')));
+		// exit(json_encode(array('status' => 'error')));
+
 	}
+	}
+
+
+	
 }
 if($_SERVER['REQUEST_METHOD'] === 'PUT'){
 	// echo 'Put';
@@ -36,9 +48,11 @@ if($_SERVER['REQUEST_METHOD'] === 'PUT'){
 		$data = json_decode(file_get_contents("php://input"));
 		$sql = $conn->query("UPDATE prod SET item_name = '".$data->item_name."', item_desc = '".$data->item_desc."', item_count = '".$data->item_count."' WHERE id = '$id'");
 		if($sql){
-			exit(json_encode(array('status' => 'success')));
+			echo json_encode('success');
+			// exit(json_encode(array('status' => 'success')));
 		}else{
-			exit(json_encode(array('status' => 'error')));
+			echo json_encode('error');
+			// exit(json_encode(array('status' => 'error')));
 		}
 	}
 }

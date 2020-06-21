@@ -16,6 +16,14 @@ RewriteEngine On
 RewriteRule ^api/prodcharttotalin/?$ apicharttotalin/appcharttotalin.php
 RewriteRule ^api/prodcharttotalin/([0-9]+)?$ apicharttotalin/appcharttotalin.php?id=$4
 
+
+
 RewriteEngine On
 RewriteRule ^api/apicaterout/?$ apicaterout/apicaterout.php
 RewriteRule ^api/apicaterout/([0-9]+)?$ apicaterout/apicaterout.php?id=$5
+
+
+
+RewriteEngine On
+RewriteRule ^api/prodcharttotalout/?$ appcharttotalout/appcharttotalout.php
+RewriteRule ^api/prodcharttotalout/([0-9]+)?$ appcharttotalout/appcharttotalout.php?id=$6
